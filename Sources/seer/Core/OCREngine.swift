@@ -5,7 +5,7 @@ import Vision
 struct OCREngine: Sendable {
     func recognize(image: CGImage, options: RecognitionOptions) async throws -> [RecognizedLine] {
         var request = RecognizeTextRequest()
-        request.recognitionLevel = options.speed == .accurate ? .accurate : .fast
+        request.recognitionLevel = .accurate
         request.usesLanguageCorrection = options.usesLanguageCorrection
         request.automaticallyDetectsLanguage = options.automaticallyDetectsLanguage
         request.recognitionLanguages = options.languages.map { Locale.Language(identifier: $0) }

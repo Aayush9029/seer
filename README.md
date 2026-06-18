@@ -42,8 +42,8 @@ seer scan.pdf -o out.md -f markdown  # OCR every page → Markdown file
 seer images/ -r -f json              # recurse a folder → structured JSON
 seer *.png *.heic                     # mix file types and globs
 pbpaste | seer -                      # (pipe) OCR an image from stdin
-seer doc.tiff --speed fast            # trade accuracy for speed
+seer doc.tiff --languages en-US,ja-JP # constrain recognition languages
 ```
 
-Defaults to the best result: accurate recognition, language correction, automatic language
-detection, plain text on stdout.
+Every result uses Apple Vision's most accurate recognition with language correction and
+automatic language detection — plain text on stdout, no flags needed.

@@ -7,7 +7,6 @@ struct ArgumentParsingTests {
     func parsesFormatAndRecognitionOptions() throws {
         let command = try SeerCLI.parse([
             "--format", "json",
-            "--speed", "fast",
             "--languages", "en-US,ja-JP",
             "--no-correction",
             "--min-confidence", "0.45",
@@ -17,7 +16,6 @@ struct ArgumentParsingTests {
         ])
 
         #expect(command.format == .json)
-        #expect(command.speed == .fast)
         #expect(command.languages == "en-US,ja-JP")
         #expect(command.noCorrection)
         #expect(command.minConfidence == 0.45)

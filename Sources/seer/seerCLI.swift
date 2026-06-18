@@ -19,9 +19,6 @@ struct SeerCLI: AsyncParsableCommand {
     @Option(name: [.short, .long], help: "Output format: text, markdown, or json.")
     var format: OutputFormat = .text
 
-    @Option(name: [.customLong("speed"), .customLong("level")], help: "Recognition level: accurate or fast.")
-    var speed: RecognitionSpeed = .accurate
-
     @Option(help: "Comma or space separated BCP-47 language codes, such as en-US,ja-JP.")
     var languages: String?
 
@@ -48,7 +45,6 @@ struct SeerCLI: AsyncParsableCommand {
 
     mutating func run() async throws {
         let recognitionOptions = RecognitionOptions(
-            speed: speed,
             languages: splitList(languages),
             usesLanguageCorrection: !noCorrection,
             minimumConfidence: minConfidence,
